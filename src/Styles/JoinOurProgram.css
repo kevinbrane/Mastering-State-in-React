@@ -11,6 +11,7 @@
 }
 
 .joinOurProgram-title{
+  font-family: 'Oswald';
   color: white;
   font-weight: 700;
   font-size: 48px;
@@ -18,7 +19,7 @@
 
 .joinOurProgram-parraph{
   color: white;
-  font: Source Sans Pro;
+  font-family: 'Source Sans 3', sans-serif;
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
@@ -55,6 +56,10 @@ input{
     cursor: pointer;
 }
 
+input::placeholder {
+  color: white;
+}
+
 footer {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -64,7 +69,7 @@ footer {
   background: #464547;
   padding: 39px;
   height: 199px;
-  width: 1200px;
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -75,11 +80,15 @@ footer span {
   font-size: 16px;
   line-height: 19px;
   color: rgba(255, 255, 255, 0.4);
+  justify-self: start;
+  
 }
 
 .footer__project-column{
+  display: flex;
   grid-area: title;
-  justify-self: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .small-logo {
@@ -101,6 +110,7 @@ footer span {
 
 .direction_column{
   grid-area: desc;
+  justify-self: start;
 }
 
 .website_column {
@@ -110,3 +120,30 @@ footer span {
 .rights_column {
   grid-area: rights;
 }
+
+@media screen and (max-width: 780px) {
+  .submit-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    height: 292px
+  }
+
+  .footer__project-column{
+    margin-bottom: 25px;
+  }
+
+  .rights_column{
+    margin-top: 25px;
+  }
+}
+
+

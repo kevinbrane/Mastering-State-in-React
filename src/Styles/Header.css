@@ -9,21 +9,50 @@ header {
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 1200px;
+  width: 100%;
+  max-width: 1280px; /* Agregamos un ancho máximo de 1280px */
+  margin: 0 auto; /* Centramos el header en la página */
+  padding: 20px;
 }
 
-h1{
+h1 {
   font-size: 48px;
   font-weight: 700;
+  font-family: 'Oswald', sans-serif;
+  color: #464547;
 }
 
 .title-wrapper {
   text-align: center;
+  font-family: 'Source Sans 3', sans-serif;
 }
 
 .toggle-section {
   position: absolute;
-  top: 20px;
-  right: 50px;
+  top: 30%;
+  right: -40%;
   cursor: pointer;
+}
+
+
+@media screen and (max-width: 767px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  .toggle-section {
+    top: 30%;
+    right: -20%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  .toggle-section {
+    top: 30%;
+    right: -30%;
+  }
 }

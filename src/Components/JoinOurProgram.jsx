@@ -8,7 +8,7 @@ export default function JoinOurProgram() {
         <h1 className='joinOurProgram-title'>Join Our Program</h1>
         <p className='joinOurProgram-parraph'>Sed do eiusmod tempor incididunt <br /> ut labore et dolore magna aliqua.</p>
         <div className='submit-container'>
-          <input type="text" name="" id="" value="Email"/>
+          <input type="text" name="" id="" placeholder='Email'/>
           <button type="submit" className='subscribe-button'>SUBSCRIBE</button>
         </div>
       </div>
