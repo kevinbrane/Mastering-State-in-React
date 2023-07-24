@@ -1,0 +1,112 @@
+.joinOurProgram-container{
+  background-image: url('./public/photo.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 436px;
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+
+.joinOurProgram-title{
+  color: white;
+  font-weight: 700;
+  font-size: 48px;
+}
+
+.joinOurProgram-parraph{
+  color: white;
+  font: Source Sans Pro;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+input{
+  height: 36px;
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px;
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 26px;
+  letter-spacing: 0.1em;
+  color: white;
+}
+
+.subscribe-button{
+    height: 36px;
+    width: 115px;
+    background: #55C2D8;
+    border-radius: 18px;
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 26px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+footer {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas: 'title title desc . . . .'
+                       '. . desc2 . . rights rights';
+  background: #464547;
+  padding: 39px;
+  height: 199px;
+  width: 1200px;
+  box-sizing: border-box;
+}
+
+footer span {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.footer__project-column{
+  grid-area: title;
+  justify-self: center;
+}
+
+.small-logo {
+  height: 20px;
+  width: 20px;
+}
+
+.footer__project-2 {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 16px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-left: 10px;
+}
+
+.direction_column{
+  grid-area: desc;
+}
+
+.website_column {
+  grid-area: desc2;
+}
+
+.rights_column {
+  grid-area: rights;
+}

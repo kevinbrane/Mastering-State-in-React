@@ -1,0 +1,34 @@
+.main {
+  width: 1200x;
+}
+
+.main-section-title{
+  margin: 20px;
+}
+
+.cards-container{
+  display: flex;
+  justify-content: center;
+
+}
+
+.card-component{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 315px;
+  height: 400px;
+}
+
+img {
+  margin-top: 20px;s
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 10px;
+}
+
+h5{
+  font-weight: 700;
+}

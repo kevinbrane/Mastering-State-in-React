@@ -1,0 +1,29 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 1200px;
+}
+
+h1{
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.title-wrapper {
+  text-align: center;
+}
+
+.toggle-section {
+  position: absolute;
+  top: 20px;
+  right: 50px;
+  cursor: pointer;
+}
