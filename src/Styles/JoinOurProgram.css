@@ -1,9 +1,10 @@
 .joinOurProgram-container{
   background-image: url('./public/photo.png');
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   height: 436px;
-  width: 1200px;
+  width: 100%;
+  max-width: 1280px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -129,11 +130,16 @@ footer span {
     gap: 20px;
   }
 
+  input{
+    width: 70%;
+  }
+
   footer{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 5px;
+    width: 100vw;
     height: 292px
   }
 

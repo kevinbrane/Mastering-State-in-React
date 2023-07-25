@@ -27,12 +27,15 @@
 .card-component {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   width: calc(33.33% - 20px);
   max-width: 315px;
   height: 400px;
   margin: 10px;
+  -webkit-box-shadow: 0px 0px 61px -7px rgba(0,0,0,0.18);
+  -moz-box-shadow: 0px 0px 61px -7px rgba(0,0,0,0.18);
+  box-shadow: 0px 0px 61px -7px rgba(0,0,0,0.18);
 }
 
 img {

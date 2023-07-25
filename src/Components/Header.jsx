@@ -17,7 +17,9 @@ export default function Header({ toggleMainSection }) {
         <div className="title-wrapper">
           <h1>Big Community of<br />People Like You</h1>
         </div>
-        <button className="toggle-section" onClick={handleToggleMainSection}>Show section</button>
+        <button className="toggle-section" onClick={handleToggleMainSection}>
+        {showMainSection ? 'Hide section' : 'Show section'}
+        </button>
       </header>
     </div>
   )

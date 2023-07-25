@@ -10,8 +10,8 @@ header {
   align-items: center;
   position: relative;
   width: 100%;
-  max-width: 1280px; /* Agregamos un ancho máximo de 1280px */
-  margin: 0 auto; /* Centramos el header en la página */
+  max-width: 1280px; 
+  margin: 0 auto;
   padding: 20px;
 }
 
