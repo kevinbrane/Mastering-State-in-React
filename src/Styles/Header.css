@@ -5,14 +5,19 @@
 }
 
 header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: '. title button';
   position: relative;
   width: 100%;
   max-width: 1280px; 
   margin: 0 auto;
-  padding: 20px;
+}
+
+.title-wrapper {
+  grid-area: title;
+  text-align: center;
+  font-family: 'Source Sans 3', sans-serif;
 }
 
 h1 {
@@ -22,37 +27,32 @@ h1 {
   color: #464547;
 }
 
-.title-wrapper {
-  text-align: center;
-  font-family: 'Source Sans 3', sans-serif;
-}
 
 .toggle-section {
-  position: absolute;
-  top: 30%;
-  right: -40%;
+  grid-area: button;
+  width: 150px;
+  height: 50px;
   cursor: pointer;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 20px;
+  align-self: center;
+  justify-self: center;
 }
-
 
 @media screen and (max-width: 767px) {
   h1 {
     font-size: 36px;
   }
 
-  .toggle-section {
-    top: 30%;
-    right: -20%;
+  header {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 40px 0 40px;
   }
-}
 
-@media screen and (max-width: 480px) {
   h1 {
-    font-size: 24px;
+    font-size: 48px;
+    margin-bottom: 10px;
   }
 
-  .toggle-section {
-    top: 30%;
-    right: -30%;
-  }
 }

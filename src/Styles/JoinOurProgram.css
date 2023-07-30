@@ -1,24 +1,22 @@
-.joinOurProgram-container{
+.joinOurProgram-container {
   background-image: url('./public/photo.png');
   background-repeat: no-repeat;
   background-size: cover;
   height: 436px;
   width: 100%;
-  max-width: 1280px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   justify-content: space-evenly;
 }
 
-.joinOurProgram-title{
+.joinOurProgram-title {
   font-family: 'Oswald';
   color: white;
   font-weight: 700;
   font-size: 48px;
 }
 
-.joinOurProgram-parraph{
+.joinOurProgram-parraph {
   color: white;
   font-family: 'Source Sans 3', sans-serif;
   font-weight: 400;
@@ -26,7 +24,7 @@
   line-height: 32px;
 }
 
-.unSuscribe-btn{
+.unSuscribe-btn {
   background-color: transparent;
   font-family: 'Oswald';
   font-style: normal;
@@ -39,11 +37,11 @@
   cursor: pointer;
 }
 
-.unSuscribe-btn:hover{
+.unSuscribe-btn:hover {
   color: #55c2d8; 
 }
 
-.submit-container{
+.submit-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,7 +49,7 @@
   margin-top: 20px;
 }
 
-.input{
+.input {
   height: 36px;
   width: 400px;
   background-color: rgba(255, 255, 255, 0.1);
@@ -69,7 +67,7 @@ input::placeholder {
   color: white;
 }
 
-.subscribe-button{
+.subscribe-button {
     height: 36px;
     width: 115px;
     background: #55C2D8;
@@ -96,7 +94,7 @@ input::placeholder {
   100% {color: rgb(245, 243, 243);}
 }
 
-.erorrMessage{
+.erorrMessage {
   color: rgb(245, 243, 243);
   font-family: 'Source Sans 3', sans-serif;
   font-weight: 400;
@@ -108,94 +106,26 @@ input::placeholder {
   animation: colorChange 3s infinite;
 }
 
-footer {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-template-areas: 'title title desc . . . .'
-                       '. . desc2 . . rights rights';
-  background: #464547;
-  padding: 39px;
-  height: 199px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-footer span {
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-  color: rgba(255, 255, 255, 0.4);
-  justify-self: start;
-  
-}
-
-.footer__project-column{
-  display: flex;
-  grid-area: title;
-  justify-content: center;
-  align-items: center;
-}
-
-.small-logo {
-  height: 20px;
-  width: 20px;
-}
-
-.footer__project-2 {
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 16px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #FFFFFF;
-  margin-left: 10px;
-}
-
-.direction_column{
-  grid-area: desc;
-  justify-self: start;
-}
-
-.website_column {
-  grid-area: desc2;
-}
-
-.rights_column {
-  grid-area: rights;
-}
-
 @media screen and (max-width: 780px) {
-  .submit-container{
+  .joinOurProgram-container {
+    background-position: bottom 0px left -286px;
+    height: 523px;
+    padding: 20px;
+  }
+
+  .submit-container input {
+    width: 90%;
+  }
+
+  .submit-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
   }
 
-  input{
+  input {
     width: 70%;
-  }
-
-  footer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    width: 100vw;
-    height: 292px
-  }
-
-  .footer__project-column{
-    margin-bottom: 25px;
-  }
-
-  .rights_column{
-    margin-top: 25px;
   }
 }
 

@@ -12,16 +12,14 @@ export default function MainSection() {
 
   return (
     <div className='main'>
-      <div>
-        <p className='main-section-title'>{communityData?.description}</p>
-      </div>
+      <p className='main-section-title'>{communityData?.description}</p>
       <div className='cards-container'>
         {communityData?.testimonies.map((item) => (
           <div className='card-component' key={item.id}>
             <img src={item?.imgUrl} alt="" />
             <p>{item?.testimony}</p>
             <h5>{item?.name}</h5>
-            <p>{item?.position}</p>
+            <span>{item?.position}</span>
           </div>
         ))}
       </div>

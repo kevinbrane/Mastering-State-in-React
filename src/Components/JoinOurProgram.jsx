@@ -1,4 +1,4 @@
-import react, { useState } from 'react'
+import { useState } from 'react'
 import '../Styles/JoinOurProgram.css'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -24,9 +24,9 @@ export default function JoinOurProgram() {
         const subscriber = data.find(subscriber => subscriber.email === values.email);
 
         if (subscriber) {
-          window.alert('This email is already subscribed.');
-          setLoading(false);
-          return;
+          const error = new Error('This email is already subscribed.');
+          error.code = 422;
+          throw error;
         }
 
         const postData = {
@@ -51,9 +51,10 @@ export default function JoinOurProgram() {
             window.alert('Subscription failed');
           });  
       })
-      .catch(() => {
+      .catch((error) => {
+        console.log(error.code)
         setLoading(false);
-        window.alert('Error checking subscribers');
+        window.alert(`${error}, error: ${error.code}`);
       });
   };
 
@@ -86,12 +87,14 @@ export default function JoinOurProgram() {
             });
         } else {
           setLoading(false);
-          window.alert('No subscriber with this email found.');
+          const error = new Error('No subscriber with this email found.');
+          error.code = 422;
+          throw error;
         }
       })
-      .catch(() => {
+      .catch((error) => {
         setLoading(false);
-        window.alert('Error fetching subscribers');
+        window.alert(error);
       });
   };
 
@@ -102,30 +105,19 @@ export default function JoinOurProgram() {
       onSubmit={handleSubscribe}
     >
       {({ values, isValid }) => (
-        <Form>
-          <div className='joinOurProgram-container'>
+        <Form className='joinOurProgram-container'>
             <h1 className='joinOurProgram-title'>Join Our Program</h1>
             <p className='joinOurProgram-parraph'>Sed do eiusmod tempor incididunt <br /> ut labore et dolore magna aliqua.</p>
             <div className='submit-container'>
               <Field type="email" name="email" placeholder='Email' className="input" />
-              <button type="submit" className={`subscribe-button ${loading ? 'loading' : ''}`} disabled={!isValid || loading}>SUBSCRIBE</button>
+              <button type="submit" className={`subscribe-button ${loading && 'loading'}`} disabled={!isValid || loading}>SUBSCRIBE</button>
             </div>
             <div>
               <ErrorMessage name="email" component="div" className='erorrMessage' />
-              <button type='button' className={`unSuscribe-btn ${loading ? 'loading' : ''}`} onClick={() => handleUnsubscribe(values.email)} disabled={!isValid || loading}>
+              <button type='button' className={`unSuscribe-btn ${loading && 'loading'}`} onClick={() => handleUnsubscribe(values.email)} disabled={!isValid || loading}>
               Click here if you are already an user and want to cancel your Subscription
               </button>
             </div>
-          </div>
-          <footer className="footer">
-            <div className="footer__project-column">
-                <img src="./public/[PLACEHOLDER LOGO].png" alt="logo1" className="small-logo"/>
-                <label className="footer__project-2">PROJECT</label>
-            </div>
-            <span className="direction_column">123 Street,<br/> Anytown, USA 12345</span>
-            <span className="website_column">hello@website.com </span>
-            <span className="rights_column">© 2021 Project. All rights reserved</span>
-          </footer>
         </Form>
       )}
     </Formik>

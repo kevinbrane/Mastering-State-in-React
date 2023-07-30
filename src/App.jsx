@@ -3,6 +3,7 @@ import './App.css'
 import Header from './Components/Header'
 import MainSection from './Components/MainSection'
 import JoinOurProgram from './Components/JoinOurProgram'
+import Footer from './Components/Footer'
 
 function App() {
 
@@ -14,9 +15,10 @@ function App() {
 
   return (
     <>
-      <Header toggleMainSection={toggleMainSection} />
+      <Header toggleMainSection={toggleMainSection} showMainSection={showMainSection} />
       {showMainSection && <MainSection />}
       <JoinOurProgram/>
+      <Footer/>
     </>
   )
 }
