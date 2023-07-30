@@ -1,4 +1,3 @@
-import React from 'react'
 import '../Styles/Header.css'
 import { useState } from 'react'
 
@@ -18,7 +17,7 @@ export default function Header({ toggleMainSection }) {
           <h1>Big Community of<br />People Like You</h1>
         </div>
         <button className="toggle-section" onClick={handleToggleMainSection}>
-        {showMainSection ? 'Hide section' : 'Show section'}
+        {showMainSection ? 'Show section' : 'Hide section'}
         </button>
       </header>
     </div>

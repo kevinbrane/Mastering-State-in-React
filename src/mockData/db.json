@@ -1,0 +1,42 @@
+{
+  "community": {
+    "description": "We're proud of our products, and we're really excited when we get feedback from our users",
+    "testimonies": [
+      {
+        "id": "1234",
+        "imgUrl": "./public/1.png",
+        "testimony": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor.",
+        "name": "MARY SMITH",
+        "position": "Lead Designer at Company Name"
+      },
+      {
+        "id": "2468",
+        "imgUrl": "./public/2.png",
+        "testimony": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.",
+        "name": "JOHN SMYTH",
+        "position": "Creative Director in Company Name"
+      },
+      {
+        "id": "1357",
+        "imgUrl": "./public/3.png",
+        "testimony": "Aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "name": "MARYANNE SMYTH",
+        "position": "Buyer at Company Name"
+      }
+    ]
+  },
+  "subscribe": [
+    {
+      "email": "melina@gmail.com",
+      "id": 1
+    },
+    {
+      "email": "melina@gmailcom",
+      "id": 2
+    },
+    {
+      "email": "melina@gmailsdsd.com",
+      "id": 3
+    }
+  ]
+}
