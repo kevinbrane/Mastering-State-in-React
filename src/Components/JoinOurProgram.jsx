@@ -23,6 +23,12 @@ export default function JoinOurProgram() {
       .then((data) => {
         const subscriber = data.find(subscriber => subscriber.email === values.email);
 
+        if (values.email === 'forbidden@gmail.com') {
+          const error = new Error('This email is forbidden.');
+          error.code = 422;
+          throw error;
+        }
+
         if (subscriber) {
           const error = new Error('This email is already subscribed.');
           error.code = 422;
@@ -54,7 +60,7 @@ export default function JoinOurProgram() {
       .catch((error) => {
         console.log(error.code)
         setLoading(false);
-        window.alert(`${error}, error: ${error.code}`);
+        window.alert(`${error} error: ${error.code}`);
       });
   };
 
