@@ -4,22 +4,7 @@ export const subscribeUser = createAsyncThunk(
   'subscription/subscribeUser',
   async (email, { rejectWithValue }) => {
     try {
-      const response = await fetch('http://localhost:3000/subscribe');
-      const data = await response.json();
-      const subscriber = data.find(subscriber => subscriber.email === email);
 
-      if (email === 'forbidden@gmail.com') {
-        const error = new Error('This email is forbidden.');
-        error.code = 422;
-        throw error;
-      }
-
-      if (subscriber) {
-        const error = new Error('This email is already subscribed.');
-        error.code = 422;
-        throw error;
-      }
-  
       const postData = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -41,22 +26,14 @@ export const subscribeUser = createAsyncThunk(
 
 export const unsubscribeUser = createAsyncThunk(
   'subscription/unsubscribeUser',
-  async (email, { rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
-      const response = await fetch('http://localhost:3000/subscribe');
-      const data = await response.json();
-      const subscriber = data.find(subscriber => subscriber.email === email);
-  
-      if (!subscriber) {
-        throw new Error('No subscriber with this email found.');
-      }
-
-      const deleteData = {
-        method: 'DELETE',
+      const postData = {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       };
 
-      const unsubscribeResponse = await fetch(`http://localhost:3000/subscribe/${subscriber.id}`, deleteData);
+      const unsubscribeResponse = await fetch('http://localhost:3000/unsubscribe', postData);
       if (!unsubscribeResponse.ok) {
         throw new Error(unsubscribeResponse.statusText);
       }

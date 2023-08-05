@@ -1,0 +1,15 @@
+.notFound-container {
+    height: 100vh;
+    width: 100vw;
+    background-color: #eeeeee;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    align-items: flex-start;  
+   padding: 20px;
+}
+
+.back-to-site{
+    color: #7ccabe;
+    text-decoration: none;
+}

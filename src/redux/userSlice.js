@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import data from '../mockData/db.json';
 
 export const fetchUser = createAsyncThunk(
   'user/fetchUser',
@@ -12,17 +11,9 @@ export const fetchUser = createAsyncThunk(
 
 const userSlice = createSlice({
   name: 'user',
-  initialState: [ ...data.subscribe ],
+  initialState: '',
   reducers: {
-    addUser: (state, action) => {
-      state = state.push(action.payload);
-    },
-    deleteUser: (state, action) => {
-      const email = action.payload;
-      const index = state.indexOf(email);
-      const newArray = state.splice(index, 1);
-      state = newArray;
-    }
+    setUser: (_, action) => (action.payload),
   },
   extraReducers: (builder) => {
     builder
@@ -32,6 +23,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { addUser, deleteUser } = userSlice.actions;
+export const { setUser } = userSlice.actions;
 
 export default userSlice.reducer;

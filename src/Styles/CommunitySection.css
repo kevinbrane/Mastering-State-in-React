@@ -26,44 +26,6 @@
   gap: 20px;
 }
 
-.card-component {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 315px;
-  height: auto;
-  padding: 20px;
-  -webkit-box-shadow: 0px 0px 61px -7px rgba(0,0,0,0.18);
-  -moz-box-shadow: 0px 0px 61px -7px rgba(0,0,0,0.18);
-  box-shadow: 0px 0px 61px -7px rgba(0,0,0,0.18);
-}
-
-img {
-  margin: 20px;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-}
-
-p {
-  color: #666666;
-  text-align: center;
-}
-
-h5 {
-  font-weight: 700;
-  font-family: 'Source Sans 3', sans-serif;
-  text-align: center;
-  margin-top: 50px;
-}
-
-.card-component span {
-  font-size: 12px;
-  margin-top: 15px;
-  width: 40%;
-}
-
 @media screen and (max-width: 767px) {
   .main {
     margin: 0;

@@ -1,25 +1,51 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Header from './Components/Header'
-import MainSection from './Components/MainSection'
+import CommunitySection from './Components/CommunitySection'
 import JoinOurProgram from './Components/JoinOurProgram'
 import Footer from './Components/Footer'
+import PageNotFound from './Components/PageNotFound'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import axios from 'axios'
+import CommunityUser from './Components/CommunityUser'
 
 function App() {
+  const [showCommunitySection, setShowCommunitySection] = useState(true)
+  const [communityData, setCommunityData] = useState([])
 
-  const [showMainSection, setShowMainSection] = useState(true)
+  useEffect(() => {
+    axios.get('http://localhost:3000/community')
+      .then(response => {
+        setCommunityData(response.data)
+      })
+      .catch(error => {
+        console.log('Error getting data:', error)
+      })
+  }, [])
 
-  const toggleMainSection = () => {
-    setShowMainSection(!showMainSection)
+  const toggleCommunitySection = () => {
+    setShowCommunitySection(!showCommunitySection)
   }
 
   return (
-    <>
-      <Header toggleMainSection={toggleMainSection} showMainSection={showMainSection} />
-      {showMainSection && <MainSection />}
-      <JoinOurProgram/>
-      <Footer/>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/community" element={<>
+          <Header toggleCommunitySection={toggleCommunitySection} showCommunitySection={showCommunitySection}  />
+          <CommunitySection data={communityData}/>
+        </>
+        } />
+        <Route path="/" element={<>
+          <Header toggleCommunitySection={toggleCommunitySection} showCommunitySection={showCommunitySection} />
+          {showCommunitySection && <CommunitySection data={communityData} />}
+          <JoinOurProgram />
+          <Footer />
+        </>} />
+        <Route path="/community/:id" element={<CommunityUser />}/>
+        <Route path="/error" element={<PageNotFound />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </Router>
   )
 }
 

@@ -3,7 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import '../Styles/JoinOurProgram.css'
 import { subscribeUser, unsubscribeUser } from '../redux/subscriptionSlice';
-import { addUser, deleteUser } from '../redux/userSlice';
+import { setUser } from '../redux/userSlice';
 
 export default function JoinOurProgram() {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ export default function JoinOurProgram() {
     if(values.email !== '') {
       const resultAction = await dispatch(subscribeUser(values.email));
       if (subscribeUser.fulfilled.match(resultAction)) {
-        dispatch(addUser(values.email))
+        dispatch(setUser(values.email))
         alert(resultAction.payload.message);
       } else {
         if (resultAction.payload) {
@@ -40,7 +40,7 @@ export default function JoinOurProgram() {
     if(email !== '') {
       const resultAction = await dispatch(unsubscribeUser(email));
       if (unsubscribeUser.fulfilled.match(resultAction)) {
-        dispatch(deleteUser(email))
+        dispatch(setUser(''))
         alert(resultAction.payload.message);
       } else {
         if (resultAction.payload) {
