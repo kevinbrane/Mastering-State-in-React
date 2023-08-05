@@ -1,9 +1,13 @@
-import { useState } from 'react'
-import '../Styles/JoinOurProgram.css'
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import '../Styles/JoinOurProgram.css'
+import { subscribeUser, unsubscribeUser } from '../redux/subscriptionSlice';
+import { addUser, deleteUser } from '../redux/userSlice';
 
 export default function JoinOurProgram() {
+  const dispatch = useDispatch();
+  const subscriptionState = useSelector(state => state.subscription);
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -14,94 +18,40 @@ export default function JoinOurProgram() {
               }),
   });
 
-  const [loading, setLoading] = useState(false);
-
-  const handleSubscribe = (values) => {
-    setLoading(true);
-    fetch('http://localhost:3000/subscribe')
-      .then((response) => response.json())
-      .then((data) => {
-        const subscriber = data.find(subscriber => subscriber.email === values.email);
-
-        if (values.email === 'forbidden@gmail.com') {
-          const error = new Error('This email is forbidden.');
-          error.code = 422;
-          throw error;
+  const handleSubscribe = async (values) => {
+    if(values.email !== '') {
+      const resultAction = await dispatch(subscribeUser(values.email));
+      if (subscribeUser.fulfilled.match(resultAction)) {
+        dispatch(addUser(values.email))
+        alert(resultAction.payload.message);
+      } else {
+        if (resultAction.payload) {
+          alert(resultAction.payload.message);
+        } else {
+          alert('Cannot connect to the server.');
         }
-
-        if (subscriber) {
-          const error = new Error('This email is already subscribed.');
-          error.code = 422;
-          throw error;
-        }
-
-        const postData = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: values.email })
-        };
-
-        fetch('http://localhost:3000/subscribe', postData)
-          .then(response => {
-            setLoading(false);
-            if (response.status !== 200 && response.status !== 201) {
-              throw new Error(response.statusText)
-            }
-            return response.json()
-          })
-          .then(data => {
-            window.alert('Subscription successful!', data);
-          })
-          .catch(() => {
-            setLoading(false);
-            window.alert('Subscription failed');
-          });  
-      })
-      .catch((error) => {
-        console.log(error.code)
-        setLoading(false);
-        window.alert(`${error} error: ${error.code}`);
-      });
+      }
+    } else {
+      alert('Please provide an email.');
+    }
   };
 
-  const handleUnsubscribe = (email) => {
-    setLoading(true);
-    fetch('http://localhost:3000/subscribe')
-      .then((response) => response.json())
-      .then((data) => {
-        const subscriber = data.find(subscriber => subscriber.email === email);
-  
-        if (subscriber) {
-          const deleteData = {
-            method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' },
-          };
-  
-          fetch(`http://localhost:3000/subscribe/${subscriber.id}`, deleteData)
-            .then(response => {
-              setLoading(false);
-              if (!response.ok) {
-                throw new Error(response.statusText)
-              }
-              return response.json()
-            })
-            .then(() => {
-              window.alert('Unsubscription successful!')
-            })
-            .catch(() => {
-              window.alert('Unsubscription failed');
-            });
+  const handleUnsubscribe = async (email) => {
+    if(email !== '') {
+      const resultAction = await dispatch(unsubscribeUser(email));
+      if (unsubscribeUser.fulfilled.match(resultAction)) {
+        dispatch(deleteUser(email))
+        alert(resultAction.payload.message);
+      } else {
+        if (resultAction.payload) {
+          alert(resultAction.payload.message);
         } else {
-          setLoading(false);
-          const error = new Error('No subscriber with this email found.');
-          error.code = 422;
-          throw error;
+          alert('Cannot connect to the server.');
         }
-      })
-      .catch((error) => {
-        setLoading(false);
-        window.alert(error);
-      });
+      }
+    } else {
+      alert('Please provide an email.');
+    }
   };
 
   return (
@@ -116,17 +66,16 @@ export default function JoinOurProgram() {
             <p className='joinOurProgram-parraph'>Sed do eiusmod tempor incididunt <br /> ut labore et dolore magna aliqua.</p>
             <div className='submit-container'>
               <Field type="email" name="email" placeholder='Email' className="input" />
-              <button type="submit" className={`subscribe-button ${loading && 'loading'}`} disabled={!isValid || loading}>SUBSCRIBE</button>
+              <button type="submit" className={`subscribe-button ${subscriptionState.status === 'loading' && 'loading'}`} disabled={!isValid || subscriptionState.status === 'loading'}>SUBSCRIBE</button>
             </div>
             <div>
               <ErrorMessage name="email" component="div" className='erorrMessage' />
-              <button type='button' className={`unSuscribe-btn ${loading && 'loading'}`} onClick={() => handleUnsubscribe(values.email)} disabled={!isValid || loading}>
+              <button type='button' className={`unSuscribe-btn ${subscriptionState.status === 'loading' && 'loading'}`} onClick={() => handleUnsubscribe(values.email)} disabled={!isValid || subscriptionState.status === 'loading'}>
               Click here if you are already an user and want to cancel your Subscription
               </button>
             </div>
         </Form>
       )}
     </Formik>
-  )
+  );
 }
-

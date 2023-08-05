@@ -1,8 +1,13 @@
+import { setVisibility } from '../redux/visibilitySlice'
+import { useDispatch } from 'react-redux';
+
 import '../Styles/Header.css'
 
 export default function Header({ toggleMainSection, showMainSection }) {
+  const dispatch = useDispatch();
 
   const handleToggleMainSection = () => {
+    dispatch(setVisibility(!showMainSection))
     toggleMainSection()
   }
 
