@@ -1,7 +1,6 @@
-import { setVisibility } from '../redux/visibilitySlice'
+import { setVisibility } from '../../redux/visibilitySlice'
 import { useDispatch } from 'react-redux';
-
-import '../Styles/Header.css'
+import '../../styles/Header.css'
 
 export default function Header({ toggleCommunitySection, showCommunitySection }) {
   const dispatch = useDispatch();

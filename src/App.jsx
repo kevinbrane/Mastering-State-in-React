@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import Header from './Components/Header'
+import Header from './Components/Header/Header'
 import CommunitySection from './Components/CommunitySection'
 import JoinOurProgram from './Components/JoinOurProgram'
 import Footer from './Components/Footer'
