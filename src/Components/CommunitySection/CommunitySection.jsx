@@ -1,5 +1,5 @@
-import CommunityUser from './CommunityUser';
-import '../Styles/CommunitySection.css'
+import CommunityUser from '../../Components/CommunityUser/CommunityUser';
+import '../../Styles/CommunitySection.css'
 
 export default function CommunitySection({ data }) {
   return (

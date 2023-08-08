@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import '../Styles/JoinOurProgram.css'
-import { subscribeUser, unsubscribeUser } from '../redux/subscriptionSlice';
-import { setUser } from '../redux/userSlice';
+import '../../Styles/JoinOurProgram.css'
+import { subscribeUser, unsubscribeUser } from '../../redux/subscriptionSlice';
+import { setUser } from '../../redux/userSlice';
 
 export default function JoinOurProgram() {
   const dispatch = useDispatch();

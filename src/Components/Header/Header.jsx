@@ -16,7 +16,7 @@ export default function Header({ toggleCommunitySection, showCommunitySection })
         <h1>Big Community of People Like You</h1>
       </div>
       <button className="toggle-section" onClick={handleToggleCommunitySection}>
-        {!toggleCommunitySection ? 'Show section' : 'Hide section'}
+        {showCommunitySection ? 'Hide section' : 'Show section'}  {/* Cambiado aquí */}
       </button>
     </header>
   )

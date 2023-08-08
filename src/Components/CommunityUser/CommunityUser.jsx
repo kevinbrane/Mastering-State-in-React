@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import '../Styles/CommunityUser.css'
-import PageNotFound from './PageNotFound';
+import '../../Styles/CommunityUser.css'
+import PageNotFound from '../../Components/PageNotFound/PageNotFound';
 
 export default function CommunityUser({ user }) {
   const { id } = useParams();

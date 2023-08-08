@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import Header from './Components/Header/Header'
-import CommunitySection from './Components/CommunitySection'
-import JoinOurProgram from './Components/JoinOurProgram'
-import Footer from './Components/Footer'
-import PageNotFound from './Components/PageNotFound'
+import CommunitySection from '../src/Components/CommunitySection/CommunitySection'
+import JoinOurProgram from '../src/Components/JoinOurProgram/JoinOurProgram'
+import Footer from '../src/Components/Footer/Footer'
+import PageNotFound from '../src/Components/PageNotFound/PageNotFound'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import axios from 'axios'
-import CommunityUser from './Components/CommunityUser'
+import CommunityUser from '../src/Components/CommunityUser/CommunityUser'
 
 function App() {
   const [showCommunitySection, setShowCommunitySection] = useState(true)
