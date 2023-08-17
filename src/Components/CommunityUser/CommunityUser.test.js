@@ -1,30 +1,42 @@
 import React from 'react';
-import { render, waitFor } from '@testing-library/react';
-import mockAxios from 'jest-mock-axios';
+import { render } from '@testing-library/react';
 import CommunityUser from './CommunityUser';
+import { BrowserRouter } from 'react-router-dom';
 
 describe('<CommunityUser />', () => {
-    afterEach(() => {
-        mockAxios.reset();
-    });
+  it('renders without crashing', () => {
+    render(
+      <BrowserRouter>
+        <CommunityUser />
+      </BrowserRouter>
+    );
+  });
 
-    it('displays user data correctly based on server response', async () => {
-        const mockData = {
-            id: '123',
-            avatar: 'https://example.com/avatar.jpg',
-            username: 'testuser',
-            description: 'This is a test user.'
-        };
+  it('renders user data correctly when provided as props', () => {
+    const userData = {
+      avatar: 'path/to/avatar.jpg',
+      testimony: 'This is a mock testimony',
+      firstName: 'John',
+      lastName: 'Doe',
+      position: 'Developer',
+      id: 'mockUserId',
+    };
 
-        mockAxios.get.mockResolvedValueOnce({ data: mockData });
+    const { getByText, getByAltText } = render(
+      <CommunityUser user={userData} />
+    );
 
-        // Renderiza tu componente sin envolverlo en MemoryRouter y Route
-        const { getByAltText, getByText } = render(<CommunityUser />);
+    expect(getByAltText('')).toHaveAttribute('src', userData.avatar);
+    expect(getByText(userData.testimony)).toBeInTheDocument();
+    expect(getByText(`${userData.firstName} ${userData.lastName}`)).toBeInTheDocument();
+    expect(getByText(userData.position)).toBeInTheDocument();
+  });
 
-        await waitFor(() => expect(mockAxios.get).toHaveBeenCalledTimes(1));
+  it('renders PageNotFound component when no user data provided or fetched', () => {
+    const { getByText } = render(
+      <CommunityUser />
+    );
 
-        expect(getByAltText('User Avatar')).toHaveAttribute('src', mockData.avatar);
-        expect(getByText(mockData.username)).toBeInTheDocument();
-        expect(getByText(mockData.description)).toBeInTheDocument();
-    });
+    expect(getByText('Page Not found')).toBeInTheDocument();
+  });
 });

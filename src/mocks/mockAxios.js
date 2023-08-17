@@ -1,5 +1,6 @@
-export default {
-    get: jest.fn().mockResolvedValue({ data: {} }),
-    post: jest.fn().mockResolvedValue({ data: {} }),
-    // ...otros métodos de Axios
-};
+const mockAxios = jest.genMockFromModule('axios');
+mockAxios.create = jest.fn(() => mockAxios);
+mockAxios.get.mockResolvedValue({ data: {} });
+mockAxios.post.mockResolvedValue({ data: {} });
+
+export default mockAxios;
