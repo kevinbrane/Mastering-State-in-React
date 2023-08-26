@@ -1,14 +1,14 @@
 import { render } from '@testing-library/react';
 import JoinOurProgram from './JoinOurProgram';
 import { Provider } from 'react-redux';
-import getMockStore from '../../mocks/mockStore'; // Importa la función correcta
+import getMockStore from '../../mocks/mockStore';
 
 beforeEach(() => {
   fetch.resetMocks();
 });
 
 test('subscribes a user successfully', async () => {
-   const store = getMockStore();  // Usa la función correcta
+   const store = getMockStore(); 
 
    fetch.mockResponseOnce(JSON.stringify({
      message: 'Subscription successful!'
@@ -19,9 +19,6 @@ test('subscribes a user successfully', async () => {
          <JoinOurProgram />
       </Provider>
    );
-
-   // Continúa aquí simulando interacciones del usuario y verificando resultados
-   // Por ejemplo, ingresar un email, hacer clic en el botón "SUBSCRIBE", etc.
 });
 
 test('handles subscription error', async () => {
@@ -34,8 +31,4 @@ test('handles subscription error', async () => {
          <JoinOurProgram />
       </Provider>
    );
-
-   // Similar al test anterior, pero aquí esperarías ver el mensaje de error
 });
-
-// Puedes añadir más tests basados en diferentes escenarios

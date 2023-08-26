@@ -1,18 +1,14 @@
 import { setupServer } from 'msw/node';
-import { handlers } from './handlers'; 
+import { handlers as externalHandlers } from './handlers';
 import { rest } from 'msw';
+import mockedCommunityData from './mockedCommunityData'; // Asegúrate de ajustar este path si es necesario
 
-const mockedCommunityData = [
-    // ...tu data mockeada, como el JSON que me mostraste anteriormente
-  ];
-  
-  const handlers = [
-    // ...otros handlers que ya podrías tener
-  
+const localHandlers = [
     rest.get('http://localhost:3000/community', (req, res, ctx) => {
       return res(ctx.json(mockedCommunityData));
     }),
-  ];
-  
+];
 
-export const server = setupServer(...handlers);
+const combinedHandlers = [...externalHandlers, ...localHandlers];
+
+export const server = setupServer(...combinedHandlers);

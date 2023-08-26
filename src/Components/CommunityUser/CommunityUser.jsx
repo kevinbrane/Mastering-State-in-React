@@ -7,7 +7,7 @@ import PageNotFound from '../../Components/PageNotFound/PageNotFound';
 export default function CommunityUser({ user }) {
   const { id } = useParams();
   const [userData, setUserData] = useState(user);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null); 
 
   useEffect(() => {
     if (id && !user) {
@@ -17,14 +17,14 @@ export default function CommunityUser({ user }) {
         })
         .catch(err => {
           console.log('Error getting data:', err);
-          setError(err);
+          setError(err); 
         });
     }
   }, [id, user]);
 
   const renderUserData = () => (
     <div className='card-component'>
-      <img src={userData?.avatar} alt="" />
+      <img src={userData?.avatar} alt="User Avatar" />
       <p>{userData?.testimony}</p>
       {userData?.firstName && userData?.lastName && 
         <Link to={`/community/${userData?.id}`} className="link-name">
@@ -35,7 +35,9 @@ export default function CommunityUser({ user }) {
     </div>
   );
 
-  return userData ? renderUserData() : <PageNotFound />;
+  if (error) return <PageNotFound />;  
+  if (!userData) return <div>Loading...</div>; 
+  return renderUserData();
 }
 
 

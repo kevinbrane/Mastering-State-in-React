@@ -23,10 +23,12 @@ describe('<CommunityUser />', () => {
     };
 
     const { getByText, getByAltText } = render(
-      <CommunityUser user={userData} />
+      <BrowserRouter>
+        <CommunityUser user={userData} />
+      </BrowserRouter>
     );
 
-    expect(getByAltText('')).toHaveAttribute('src', userData.avatar);
+    expect(getByAltText('User Avatar')).toHaveAttribute('src', userData.avatar); // corregido aquí
     expect(getByText(userData.testimony)).toBeInTheDocument();
     expect(getByText(`${userData.firstName} ${userData.lastName}`)).toBeInTheDocument();
     expect(getByText(userData.position)).toBeInTheDocument();
@@ -37,6 +39,6 @@ describe('<CommunityUser />', () => {
       <CommunityUser />
     );
 
-    expect(getByText('Page Not found')).toBeInTheDocument();
+    expect(getByText('Loading...')).toBeInTheDocument(); // Cambiado a "Loading..." aquí
   });
 });
